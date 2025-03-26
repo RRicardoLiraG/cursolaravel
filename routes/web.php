@@ -1,12 +1,24 @@
 <?php
-
-use GuzzleHttp\Psr7\Request;
-use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OperacionesController;
+
 
 Route::get('/', function () {
     return view('welcome', ['nombre' => 'Roberto']);
-})->name('home'); // nombre de la ruta
+})->name('home'); // la funcion nombre setea el nombre de la ruta
+
+Route::view('/operaciones', 'layout')->name('inicio');
+Route::view('/suma', 'suma')->name('suma');
+Route::view('/resta', 'resta')->name('resta');
+Route::view('/multiplicacion', 'multiplicacion')->name('multiplicacion');
+Route::view('/division', 'division')->name('division');
+
+Route::post('/suma', [OperacionesController::class, 'suma'])->name('suma');
+Route::post('/resta', [OperacionesController::class, 'resta'])->name('resta');
+Route::post('/multiplicacion', [OperacionesController::class, 'multiplicacion'])->name('multiplicacion');
+Route::post('/division', [OperacionesController::class, 'division'])->name('division');
+
+
 
 // Route::get('/hola', function () {
 //     return route('hola');
@@ -21,10 +33,10 @@ Route::get('/', function () {
 
 // rutas con parametros obligatorios
 
-Route::get('/suma/{x}/{y}', function ($x, $y) {
-    $suma = $x + $y;
-    return 'La suma es: ' . $suma;
-});
+// Route::get('/suma/{x}/{y}', function ($x, $y) {
+//     $suma = $x + $y;
+//     return 'La suma es: ' . $suma;
+// });
 
 // Route::get('nombre/{name}', function ($name) {
 //     return 'Mi nombre es: ' . $name;
@@ -64,6 +76,3 @@ Route::get('/suma/{x}/{y}', function ($x, $y) {
 //         return 'Segundo';
 //     })->name('admin.segundo');
 // });
-
-
-
