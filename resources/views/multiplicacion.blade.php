@@ -2,7 +2,7 @@
 
 @section('content')
     <div style='text-align:center;'>
-        <h1 style='text-align:center;'>Suma</h1>
+        <h1 style='text-align:center;'>Multiplicación</h1>
 
         <form action="multiplicacion" method="post">
             @csrf
