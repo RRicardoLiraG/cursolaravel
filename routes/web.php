@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OperacionesController;
+use App\Http\Controllers\AdminUserController;
 
 
 Route::get('/', function () {
@@ -18,6 +19,12 @@ Route::post('/resta', [OperacionesController::class, 'resta'])->name('resta');
 Route::post('/multiplicacion', [OperacionesController::class, 'multiplicacion'])->name('multiplicacion');
 Route::post('/division', [OperacionesController::class, 'division'])->name('division');
 
+// 27/03/2025 middlewares/alias/
+Route::resource('users', AdminUserController::class)->parameters(['users' => 'admin_user']);
+
+Route::get('suscribed', function () {
+    return 'Estás suscrito';
+})->middleware('suscribed');
 
 
 // Route::get('/hola', function () {
